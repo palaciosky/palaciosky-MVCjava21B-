@@ -28,10 +28,10 @@ public class Persona {
        }
     }
    
-   public Persona(String dui, String apellido, String nombre){
+   public Persona(String dui, String apellido, String nombres){
         this.dui = dui;
         this.apellidos = apellido;
-        this.nombres = nombre;
+        this.nombres = nombres;
     }
    public boolean insertarDatos(){
        try{
@@ -53,15 +53,15 @@ public class Persona {
      public ArrayList<Persona> consultarRegistros(){
         ArrayList<Persona> persona = new ArrayList();
         try {
-            String sqlQueryStatement = "SELECT * FROM tb_persona";
+            String miQuery = "SELECT * FROM tb_persona";
             state = cnn.createStatement(); // Preparar el objeto statement
-            result = state.executeQuery(sqlQueryStatement); // ejecutar sentencia SQL
+            result = state.executeQuery(miQuery); // ejecutar sentencia SQL
             while(result.next()){
                 
                 persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"),result.getString("nombre_persona")));
             }
-        } catch (SQLException e) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,e);
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,ex);
         }
         return persona;
     } 

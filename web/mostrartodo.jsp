@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Datos Archivados</title>
     </head>
     <body>
         <h1>Lista</h1>
@@ -18,6 +18,8 @@
         DUI:${listaTotal.dui}<br>
         Apellidos:${listaTotal.apellidos}<br>
         Nombres:${listaTotal.nombres}<br>
+        <br>
+        <hr>
     </c:forEach>    
     </body>
 </html>
