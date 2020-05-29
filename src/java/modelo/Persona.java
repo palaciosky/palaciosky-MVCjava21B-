@@ -1,6 +1,7 @@
 
 package modelo;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 public class Persona {
@@ -18,8 +19,8 @@ public class Persona {
    
    public Persona(){
        try {
-           Class.forName("com.mysql.cj.jdbc.Driver");//Driver de la base de datos
-           cnn = DriverManager.getConnection("jdbc:mysql://localhost:3307/bd_recurso_humano?zeroDateTimeBehavior=CONVERT_TO_NULL","root","");//url de la db, user, pass
+           Class.forName("com.mysql.jdbc.Driver");//Driver de la base de datos
+           cnn = DriverManager.getConnection("jdbc:mysql://localhost:3307/bd_recurso_humano?zeroDateTimeBehavior=convertToNull","root","");//url de la db, user, pass
                    } catch (ClassNotFoundException ex) {
            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
        } catch (SQLException ex) {
@@ -27,6 +28,11 @@ public class Persona {
        }
     }
    
+   public Persona(String dui, String apellido, String nombre){
+        this.dui = dui;
+        this.apellidos = apellido;
+        this.nombres = nombre;
+    }
    public boolean insertarDatos(){
        try{
            String miQuery = "INSERT INTO tb_persona VALUES('" + dui + "', '" + apellidos + "', '"+ nombres + "');";
@@ -44,6 +50,21 @@ public class Persona {
        
        return false;   
     }
+     public ArrayList<Persona> consultarRegistros(){
+        ArrayList<Persona> persona = new ArrayList();
+        try {
+            String sqlQueryStatement = "SELECT * FROM tb_persona";
+            state = cnn.createStatement(); // Preparar el objeto statement
+            result = state.executeQuery(sqlQueryStatement); // ejecutar sentencia SQL
+            while(result.next()){
+                
+                persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"),result.getString("nombre_persona")));
+            }
+        } catch (SQLException e) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,e);
+        }
+        return persona;
+    } 
    public String getDui(){
    
        return dui;
