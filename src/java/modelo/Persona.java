@@ -28,43 +28,7 @@ public class Persona {
        }
     }
    
-   public Persona(String dui, String apellido, String nombres){
-        this.dui = dui;
-        this.apellidos = apellido;
-        this.nombres = nombres;
-    }
-   public boolean insertarDatos(){
-       try{
-           String miQuery = "INSERT INTO tb_persona VALUES('" + dui + "', '" + apellidos + "', '"+ nombres + "');";
-           int estado = 0;
-           state = cnn.createStatement();
-           estado = state.executeUpdate(miQuery);
-           if (estado == 1) {
-               return  true;
-               
-           }
-       }
-       catch (SQLException ex){
-           Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
-       return false;   
-    }
-     public ArrayList<Persona> consultarRegistros(){
-        ArrayList<Persona> persona = new ArrayList();
-        try {
-            String miQuery = "SELECT * FROM tb_persona";
-            state = cnn.createStatement(); // Preparar el objeto statement
-            result = state.executeQuery(miQuery); // ejecutar sentencia SQL
-            while(result.next()){
-                
-                persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"),result.getString("nombre_persona")));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE,null,ex);
-        }
-        return persona;
-    } 
+  
    public String getDui(){
    
        return dui;
@@ -91,5 +55,44 @@ public class Persona {
    
        this.nombres = nombres;
    }
+
+    public Persona(String dui, String apellido, String nombres){
+        this.dui = dui;
+        this.apellidos = apellido;
+        this.nombres = nombres;
+    }
+   public boolean insertarDatos(){
+       try{
+           String miQuery = "INSERT INTO tb_persona VALUES('" + dui + "', '" + apellidos + "', '"+ nombres + "');";
+           int estado = 0;
+           state = cnn.createStatement();
+           estado = state.executeUpdate(miQuery);
+           if (estado == 1) {
+               return  true;
+               
+           }
+       }
+       catch (SQLException ex){
+           Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       
+       return false;   
+    }
+   public ArrayList<Persona> consultarRegistros(){
+        ArrayList<Persona> persona = new ArrayList();
+        try {            
+            String miQuery = "Select * from tb_persona;";
+            state = cnn.createStatement();
+            result = state.executeQuery(miQuery);
+            while (result.next()) {
+                persona.add(new Persona(result.getString("dui_persona"), result.getString("apellidos_personas"), result.getString("nombre_persona")));
+            }
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(Persona.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return persona;
+    }
+
 }
 

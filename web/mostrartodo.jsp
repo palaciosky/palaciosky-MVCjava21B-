@@ -1,8 +1,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : mostrartodo
-    Created on : 05-28-2020, 09:13:16 PM
-    Author     : Palacios
+    Created on : 05-28-2020, 05:10:47 PM
+    Author     : gebbl
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,16 +10,22 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Datos Archivados</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Lista</h1>
-    <c:forEach var="listaTotal" items="${sessionScope.personas}">
+        <h1>Todos los registros!</h1>
+        <table border="1" width="600">
+            <tr>
+                <th>Dui</th><th>Apellido</th>
+                <th>Nombre</th>
+            </tr>
+      <c:forEach var="listaTotal" items="${sessionScope.personas}">
         DUI:${listaTotal.dui}<br>
         Apellidos:${listaTotal.apellidos}<br>
-        Nombres:${listaTotal.nombres}<br>
+        Apellidos:${listaTotal.nombres}<br>
         <br>
         <hr>
-    </c:forEach>    
+    </c:forEach>
+        </table>
     </body>
 </html>

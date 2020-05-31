@@ -20,12 +20,10 @@ public class Mostrar extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        /* TODO output your page here. You may use following sample code. */
-        Persona p = new Persona(); // Se inicia la conexion 
-
+        Persona p = new Persona();
         ArrayList<Persona> personas = new ArrayList();
-        personas = p.consultarRegistros(); // Guardar los registro en una arraylist
-        request.getSession().setAttribute("personas", personas);// Asiganr valores a la session
+        personas = p.consultarRegistros();
+        request.getSession().setAttribute("personas", personas);
         request.getRequestDispatcher("mostrartodo.jsp").forward(request, response);
     }
 

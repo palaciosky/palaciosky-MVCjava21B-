@@ -13,5 +13,7 @@
     </head>
     <body>
         <h1>Registro insertado con exito</h1>
+        <br>
+         <a href="http://localhost:8080/RegistrarPersonalMVCV2/mostrartodo.jsp">Ver registros</a>
     </body>
 </html>
