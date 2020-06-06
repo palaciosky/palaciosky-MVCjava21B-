@@ -3,6 +3,8 @@
     Document   : mostrartodo
     Created on : 05-28-2020, 05:10:47 PM
     Author     : gebbl
+///////////////////////////////
+FUNCIONA IRONICAMENTE BIEN¡¡
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,11 +16,7 @@
     </head>
     <body>
         <h1>Todos los registros!</h1>
-        <table border="1" width="600">
-            <tr>
-                <th>Dui</th><th>Apellido</th>
-                <th>Nombre</th>
-            </tr>
+        
       <c:forEach var="listaTotal" items="${sessionScope.personas}">
         DUI:${listaTotal.dui}<br>
         Apellidos:${listaTotal.apellidos}<br>
@@ -26,6 +24,5 @@
         <br>
         <hr>
     </c:forEach>
-        </table>
-    </body>
+     </body>
 </html>
