@@ -20,7 +20,7 @@ FUNCIONA IRONICAMENTE BIEN¡¡
       <c:forEach var="listaTotal" items="${sessionScope.personas}">
         DUI:${listaTotal.dui}<br>
         Apellidos:${listaTotal.apellidos}<br>
-        Apellidos:${listaTotal.nombres}<br>
+        Nombres:${listaTotal.nombres}<br>
         <br>
         <hr>
     </c:forEach>
