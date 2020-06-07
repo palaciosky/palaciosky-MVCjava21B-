@@ -93,6 +93,17 @@ public class Persona {
         }
         return persona;
     }
+public void modificar(String nom, String ape, String dni) {
+        
+          try {
+
+           
+            ps = cnn.prepareStatement("UPDATE tb_persona SET apellidos_persona='"+ape+"', nombre_persona='"+nom+"' WHERE dui_persona='"+dni+"'");
+            ps.executeUpdate();
+         } catch (Exception ex) {
+             System.out.println("ERROR"+ex.getMessage());
+         }
+          
+      
 
 }
-
