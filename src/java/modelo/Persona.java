@@ -93,17 +93,19 @@ public class Persona {
         }
         return persona;
     }
-public void modificar(String nom, String ape, String dni) {
+public void modificar(String dui, String apellidos, String nombres) {
         
           try {
 
            
-            ps = cnn.prepareStatement("UPDATE tb_persona SET apellidos_persona='"+ape+"', nombre_persona='"+nom+"' WHERE dui_persona='"+dni+"'");
-            ps.executeUpdate();
+            String miQuery = "UPDATE tb_persona SET apellidos_personas='"+apellidos+"', nombre_persona='"+nombres+"' WHERE dui_persona='"+dui+"'";
+           int estado = 0;
+            state = cnn.createStatement();
+            estado = state.executeUpdate(miQuery);
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
           
-      
+}   
 
 }
