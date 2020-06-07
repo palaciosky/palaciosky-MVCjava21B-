@@ -113,8 +113,8 @@ public void eliminar(String dui) throws SQLException{
           
              String miQuery = ("delete from tb_persona where dui_persona='"+ dui +"'");
         
-            ps=cnn.prepareStatement(miQuery);
-            ps.executeUpdate();
+             state = cnn.createStatement();
+             state.executeUpdate(miQuery);
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
