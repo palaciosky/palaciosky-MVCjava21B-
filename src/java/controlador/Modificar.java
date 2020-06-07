@@ -82,5 +82,22 @@ public class Modificar extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
+         PrintWriter out = response.getWriter();
+         Persona p = new Persona();
+           //mostrar los registros
+          
+        
+         if (request.getParameter("actualizar")!=null) {
+             
+             
+                p.modificar(request.getParameter("txtNombres"),request.getParameter("txtApellidos"),request.getParameter("txtDui"));
+             response.sendRedirect("modificar.jsp?mag=Registro actualizado¡!");
 
+            
+        }else{
+                 response.sendRedirect("modificar.jsp?mag=ERROR al actualizado¡!");
+             }
+    }
 }
