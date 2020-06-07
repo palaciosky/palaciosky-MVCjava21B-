@@ -109,9 +109,10 @@ public void modificar(String dui, String apellidos, String nombres) {
 }   
 public void eliminar(String dui) throws SQLException{
          try {
-             
-             state = cnn.prepareStatement("delete from tb_persona where dui_persona='"+dui+"'");
-         state.executeUpdate();
+          
+             String miQuery = ("delete from tb_persona where dui_persona='"+ dui +"'");
+            state  = cnn.prepareStatement();
+            result = state.executeUpdate(miQuery);
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
