@@ -12,6 +12,7 @@
         <servlet-name>Modificar</servlet-name>
         <servlet-class>controlador.Modificar</servlet-class>
     </servlet>
+
     <servlet-mapping>
         <servlet-name>Recibir</servlet-name>
         <url-pattern>/recibir.do</url-pattern>
@@ -24,6 +25,7 @@
         <servlet-name>Modificar</servlet-name>
         <url-pattern>/Modificar.do</url-pattern>
     </servlet-mapping>
+   
     <session-config>
         <session-timeout>
             30
