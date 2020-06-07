@@ -15,7 +15,7 @@ import modelo.Persona;
 
 /**
  *
- * @author Mario CD
+ * @author Palacios
  */
 public class Modificar extends HttpServlet {
 
@@ -70,17 +70,20 @@ public class Modificar extends HttpServlet {
     }// </editor-fold>
 protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         PrintWriter out = response.getWriter();
-         Persona p = new Persona();
-           //mostrar los registros
-                
-         if (request.getParameter("actualizar")!=null) {
-                         
-                p.modificar(request.getParameter("txtNombres"),request.getParameter("txtApellidos"),request.getParameter("txtDui"));
-             response.sendRedirect("actualizar.jsp?mag=Registro actualizado¡!");
-           
+         String dui = request.getParameter("txtDui");
+         String apellidos = request.getParameter("txtApellidos");
+         String nombres = request.getParameter("txtNombres");
+         
+        
+        Persona P = new Persona();
+        P.setDui(dui);
+        P.setApellidos(apellidos); 
+        P.setNombres(nombres);
+        
+        if(P.modificar(P)){
+             request.getRequestDispatcher("mostrar.do").forward(request, response);
         }else{
-                 response.sendRedirect("modificar.jsp?mag=ERROR al actualizado¡!");
-             }
+            request.getRequestDispatcher("noexito.jsp").forward(request, response);
+        }
     }
 }

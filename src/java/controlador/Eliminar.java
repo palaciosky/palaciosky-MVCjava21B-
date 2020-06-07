@@ -7,6 +7,9 @@ package controlador;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +19,7 @@ import modelo.Persona;
 
 /**
  *
- * @author ADMIN
+ * @author Palacios
  */
 @WebServlet(name = "Eliminar", urlPatterns = {"/eliminar.do"})
 public class Eliminar extends HttpServlet {
@@ -29,13 +32,14 @@ public class Eliminar extends HttpServlet {
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
+     * @throws java.sql.SQLException
      */
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+       protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
          PrintWriter out = response.getWriter();
          Persona p = new Persona();
-         if (request.getParameter("delete")!=null) {
+         if (request.getParameter("eliminar")!=null) {
              
                String dui = request.getParameter("txtDui");
                
@@ -45,6 +49,7 @@ public class Eliminar extends HttpServlet {
             
         }
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -58,7 +63,11 @@ public class Eliminar extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+           try {
+               processRequest(request, response);
+           } catch (SQLException ex) {
+               Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
 
     /**
@@ -72,7 +81,11 @@ public class Eliminar extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+           try {
+               processRequest(request, response);
+           } catch (SQLException ex) {
+               Logger.getLogger(Eliminar.class.getName()).log(Level.SEVERE, null, ex);
+           }
     }
 
     /**

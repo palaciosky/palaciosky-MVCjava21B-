@@ -14,6 +14,7 @@ public class Persona {
    
    
    Connection cnn;
+   PreparedStatement ps;
    Statement state;
    ResultSet result;
    
@@ -93,26 +94,27 @@ public class Persona {
         }
         return persona;
     }
-public void modificar(String dui, String apellidos, String nombres) {
+public boolean modificar(Persona p) {
         
           try {
 
            
-            String miQuery = "UPDATE tb_persona SET apellidos_personas='"+apellidos+"', nombre_persona='"+nombres+"' WHERE dui_persona='"+dui+"'";
-           int estado = 0;
+            String miQuery = "UPDATE tb_persona SET apellidos_personas='"+p.getApellidos()+"', nombre_persona='"+p.getNombres()+"' WHERE dui_persona='"+p.getDui()+"'";
+           
             state = cnn.createStatement();
-            estado = state.executeUpdate(miQuery);
+            state.executeUpdate(miQuery);
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
-          
+          return true;
 }   
 public void eliminar(String dui) throws SQLException{
          try {
           
              String miQuery = ("delete from tb_persona where dui_persona='"+ dui +"'");
-            state  = cnn.prepareStatement();
-            result = state.executeUpdate(miQuery);
+        
+            ps=cnn.prepareStatement(miQuery);
+            ps.executeUpdate();
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
