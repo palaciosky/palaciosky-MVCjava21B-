@@ -108,7 +108,7 @@ public boolean modificar(Persona p) {
          }
           return true;
 }   
-public void eliminar(String dui) throws SQLException{
+public boolean eliminar(String dui){
          try {
           
              String miQuery = ("delete from tb_persona where dui_persona='"+ dui +"'");
@@ -118,6 +118,6 @@ public void eliminar(String dui) throws SQLException{
          } catch (Exception ex) {
              System.out.println("ERROR"+ex.getMessage());
          }
-         
+         return true;
      }
 }

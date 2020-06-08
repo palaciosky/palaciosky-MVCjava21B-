@@ -36,18 +36,9 @@ public class Eliminar extends HttpServlet {
      */
        protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-         PrintWriter out = response.getWriter();
-         Persona p = new Persona();
-         if (request.getParameter("eliminar")!=null) {
-             
-               String dui = request.getParameter("txtDui");
-               
-             p.eliminar(dui);
-             
-             response.sendRedirect("eliminar.jsp?mag=Registro eliminado¡!");
-            
-        }
+        
+        request.setAttribute("tdui",request.getParameter("dui"));
+        request.getRequestDispatcher("eliminar.jsp").forward(request, response);
     }
 
 

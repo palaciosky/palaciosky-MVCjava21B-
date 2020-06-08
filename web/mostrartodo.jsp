@@ -12,11 +12,15 @@ FUNCIONA IRONICAMENTE BIEN¡¡
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Vistas Registros</title>
+         <link rel="stylesheet" type="text/css" href="cssboost/bootstrap.css">
     </head>
-    <body>
+    <body class="bg-light">
+        <div class="p-3 mb-2 bg-dark text-white " >
         <h1>Todos los registros!</h1>
-        
+         </div>
+       <div class="shadow-lg p-3 mb-5 bg-white rounded container bg-white">  
+            <h3>Registros ingresados anteriormente</h3>
       <c:forEach var="listaTotal" items="${sessionScope.personas}">
         DUI:${listaTotal.dui}<br>
         Apellidos:${listaTotal.apellidos}<br>
@@ -24,5 +28,9 @@ FUNCIONA IRONICAMENTE BIEN¡¡
         <br>
         <hr>
     </c:forEach>
+        <a class="btn btn-secondary" href="index.jsp">Registrar</a>
+        <a class="btn btn-secondary" href="actualizar.jsp">Editar</a>
+        <a class="btn btn-danger" href="eliminar.jsp">Borrar</a>
+         </div>
      </body>
 </html>
