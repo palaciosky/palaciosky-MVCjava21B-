@@ -10,17 +10,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Eliminar</title>
+        <link rel="stylesheet" type="text/css" href="cssboost/bootstrap.css">
     </head>
-    <body>
-        <a href="mostrartodo.jsp">mostrar</a>
-        <%=request.getParameter("mag")%>
+   <body class="bg-light">
+      
+   <div class="p-3 mb-2 bg-dark text-white" >
         <h1>Eliminar</h1>
-
+   </div>
+       <div class=" container shadow-lg p-3 mb-5 bg-white rounded">
+           <h3>Ingrese el dui para borrar</h3>
         <form action="Eliminar" method="post">
-            DUI:<input type="text" name="txtDui" value="" /> 
+             <label for="txtDui"   >DUI</label>
+            <input type="text" class="form-control" name="txtDui" value="" /> 
             <br>
            
-            <input type="Submit" value="Registrar Nueva Persona" name="delete" />
+            <input type="Submit" class="btn btn-danger" value="Borrar" />
         </form>
+              </div>
     </body>
 </html>
